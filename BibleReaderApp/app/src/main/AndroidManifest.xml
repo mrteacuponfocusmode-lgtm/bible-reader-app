@@ -3,7 +3,7 @@
 
     <application
         android:allowBackup="true"
-        android:label="Bible Reader KJV"
+        android:label="KJV Bible"
         android:theme="@style/Theme.AppCompat.Light"
         android:supportsRtl="true">
 
