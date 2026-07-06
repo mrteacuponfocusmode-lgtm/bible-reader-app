@@ -2,6 +2,7 @@ package com.example.biblereader
 
 import android.os.Bundle
 import android.widget.Button
+import android.widget.ScrollView
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 
@@ -14,6 +15,7 @@ class ReadingActivity : AppCompatActivity() {
 
     private lateinit var titleView: TextView
     private lateinit var bodyView: TextView
+    private lateinit var scrollView: ScrollView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -27,6 +29,7 @@ class ReadingActivity : AppCompatActivity() {
 
         titleView = findViewById(R.id.chapterTitle)
         bodyView = findViewById(R.id.chapterBody)
+        scrollView = findViewById(R.id.chapterScrollView)
         val prevButton: Button = findViewById(R.id.prevButton)
         val nextButton: Button = findViewById(R.id.nextButton)
 
@@ -45,6 +48,9 @@ class ReadingActivity : AppCompatActivity() {
             sb.append(v.verse).append(" ").append(v.text).append("\n\n")
         }
         bodyView.text = sb.toString().trim()
+
+        // Scroll back to the top every time a new chapter loads
+        scrollView.post { scrollView.scrollTo(0, 0) }
     }
 
     private fun goToPreviousChapter() {
